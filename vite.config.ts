@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react';
-import { visualizer } from 'rollup-plugin-visualizer';
+import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -11,10 +11,6 @@ export default defineConfig({
           ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }]
         ]
       }
-    }),
-    visualizer({
-      filename: 'dist/stats.html',
-      open: true
     })
   ],
   test: {
@@ -33,13 +29,33 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     sourcemap: true,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
+    lib: {
+      entry: 'src/embed.tsx',
+      name: 'ChatbotA',
+      formats: ['umd'],
+      fileName: () => 'chatbot.js'
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        inlineDynamicImports: true,
+        assetFileNames: 'chatbot.js',
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
+        }
       }
     },
-    target: 'es2015'
+    exclude: [
+      '**/*.test.ts',
+      '**/*.test.tsx',
+      '**/__tests__/**',
+      '**/test/**'
+    ]
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
   }
 }); 
