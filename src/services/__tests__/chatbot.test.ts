@@ -18,7 +18,11 @@ describe('ChatbotService', () => {
           text: '注文について',
           answer: 'ご注文は受注フォームからお願いいたします。'
         }
-      ]
+      ],
+      answers: {
+        q1_opt1: '製品についての詳細は製品カタログをご覧ください。',
+        q1_opt2: 'ご注文は受注フォームからお願いいたします。'
+      }
     },
     {
       id: 'q2',
@@ -29,7 +33,10 @@ describe('ChatbotService', () => {
           text: '仕様について',
           answer: '製品仕様書をご確認ください。'
         }
-      ]
+      ],
+      answers: {
+        q2_opt1: '製品仕様書をご確認ください。'
+      }
     }
   ];
 
@@ -192,7 +199,7 @@ describe('ChatbotService', () => {
       service.selectOption('q1_opt1');
       service.selectOption('q2_opt1');
       
-      service.reset();
+      service.resetConversation();
       const question = service.getCurrentQuestion();
       expect(question?.id).toBe('q1');
       // @ts-ignore - テストのため、privateプロパティにアクセス

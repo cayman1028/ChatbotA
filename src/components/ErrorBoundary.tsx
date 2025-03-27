@@ -2,6 +2,7 @@ import { Component, ErrorInfo, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
+  fallback?: ReactNode;
 }
 
 interface State {
@@ -28,11 +29,15 @@ export class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
+      if (this.props.fallback) {
+        return this.props.fallback;
+      }
       return (
-        <div className="error-boundary">
-          <h2>エラーが発生しました</h2>
-          <p>{this.state.error?.message}</p>
+        <div data-testid="error-boundary" className="error-boundary">
+          <h2>申し訳ありません</h2>
+          <p>チャットボットでエラーが発生しました。</p>
           <button
+            data-testid="error-retry-button"
             onClick={() => {
               this.setState({ hasError: false, error: null });
             }}

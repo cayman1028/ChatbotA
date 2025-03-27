@@ -1,10 +1,18 @@
 import { Question } from '../types/chatbot.types';
 import { ChatbotError } from '../utils/errors';
 
+export { ChatbotError };
+
+interface ChatHistory {
+  answer: string;
+  timestamp: Date;
+}
+
 export class ChatbotService {
   private questions: Question[];
   private currentQuestionId: string | null;
   private initialQuestionId: string;
+  private history: ChatHistory[] = [];
 
   constructor(questions: Question[]) {
     this.questions = [];
@@ -17,6 +25,12 @@ export class ChatbotService {
     if (!questions.length) {
       throw new ChatbotError('質問リストが空です');
     }
+
+    questions.forEach(question => {
+      if (!question.answers) {
+        throw new ChatbotError(`質問 "${question.id}" にanswersプロパティが設定されていません`);
+      }
+    });
 
     this.questions = questions;
     this.initialQuestionId = questions[0].id;
@@ -39,11 +53,18 @@ export class ChatbotService {
       throw new ChatbotError('選択された選択肢が見つかりません');
     }
 
+    const answer = currentQuestion.answers[optionId] || selectedOption.answer;
+    this.history.push({
+      answer,
+      timestamp: new Date()
+    });
+
     this.currentQuestionId = selectedOption.nextQuestionId || null;
-    return currentQuestion.answers[optionId];
+    return answer;
   }
 
   resetConversation(): void {
     this.currentQuestionId = this.initialQuestionId;
+    this.history = [];
   }
 } 

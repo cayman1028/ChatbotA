@@ -22,7 +22,7 @@ describe('LoadingSpinner', () => {
     };
 
     sizes.forEach(size => {
-      const { container } = render(<LoadingSpinner size={size} />);
+      render(<LoadingSpinner size={size} />);
       const spinner = screen.getByTestId('loading-spinner');
       expect(spinner).toHaveStyle({
         width: expectedSizes[size],

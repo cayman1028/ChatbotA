@@ -1,11 +1,20 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ChatbotWidget } from './components/ChatbotWidget';
-import './styles/chatbot.css';
+import styles from './styles/chatbot.css?inline';
 import { Question } from './types/chatbot.types';
 
 // チャットボットの初期化関数
-export function initializeChatbot(containerId: string, questions: Question[]) {
+function initializeChatbot(containerId: string, questions: Question[]) {
+  // スタイルの自動注入
+  if (!document.getElementById('chatbot-styles')) {
+    const style = document.createElement('style');
+    style.id = 'chatbot-styles';
+    style.textContent = styles;
+    document.head.appendChild(style);
+  }
+
+  // コンポーネントのマウント
   const container = document.getElementById(containerId);
   if (!container) {
     console.error(`Container with id "${containerId}" not found`);

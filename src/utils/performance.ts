@@ -42,7 +42,7 @@ class PerformanceMonitor {
     metrics.push({
       renderTime: '0ms',
       messageCount: 0,
-      memoryUsage: this.getMemoryUsage(),
+      memoryUsage: 'N/A',
       timestamp: Date.now()
     });
   }
@@ -60,7 +60,7 @@ class PerformanceMonitor {
     metrics.push({
       renderTime: `${renderTime.toFixed(2)}ms`,
       messageCount,
-      memoryUsage: this.getMemoryUsage(),
+      memoryUsage: 'N/A',
       timestamp: Date.now()
     });
 
@@ -68,7 +68,7 @@ class PerformanceMonitor {
     console.log(`[Performance] ${componentId}:`, {
       renderTime: `${renderTime.toFixed(2)}ms`,
       messageCount,
-      memoryUsage: this.getMemoryUsage()
+      memoryUsage: 'N/A'
     });
   }
 
@@ -91,14 +91,6 @@ class PerformanceMonitor {
       this.metricsMap.set(componentId, []);
     }
     return this.metricsMap.get(componentId)!;
-  }
-
-  private getMemoryUsage(): string {
-    if (performance.memory) {
-      const usedHeap = (performance.memory.usedJSHeapSize / 1024 / 1024).toFixed(2);
-      return `${usedHeap}MB`;
-    }
-    return 'N/A';
   }
 }
 

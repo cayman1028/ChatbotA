@@ -34,7 +34,7 @@ describe('ErrorBoundary', () => {
     );
 
     expect(consoleError).toHaveBeenCalledWith(
-      'チャットボットでエラーが発生しました:',
+      'エラーが発生しました:',
       expect.any(Error),
       expect.any(Object)
     );

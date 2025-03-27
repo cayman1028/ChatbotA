@@ -8,9 +8,9 @@ const sampleQuestions: Question[] = [
     id: 'q1',
     text: 'ご用件をお選びください',
     options: [
-      { id: 'opt1', text: '商品について', nextQuestionId: 'q2' },
-      { id: 'opt2', text: 'サービスについて', nextQuestionId: 'q3' },
-      { id: 'opt3', text: 'その他のお問い合わせ', nextQuestionId: 'q4' }
+      { id: 'opt1', text: '商品について', answer: '商品についてのご質問ですね。', nextQuestionId: 'q2' },
+      { id: 'opt2', text: 'サービスについて', answer: 'サービスについてのご質問ですね。', nextQuestionId: 'q3' },
+      { id: 'opt3', text: 'その他のお問い合わせ', answer: 'その他のお問い合わせですね。', nextQuestionId: 'q4' }
     ],
     answers: {
       opt1: '商品についてのご質問ですね。',
@@ -22,9 +22,9 @@ const sampleQuestions: Question[] = [
     id: 'q2',
     text: '商品について、どのような内容をお知りになりたいですか？',
     options: [
-      { id: 'opt1', text: '価格について', nextQuestionId: null },
-      { id: 'opt2', text: '在庫について', nextQuestionId: null },
-      { id: 'opt3', text: '仕様について', nextQuestionId: null }
+      { id: 'opt1', text: '価格について', answer: '価格についてのご質問ですね。担当者よりご連絡させていただきます。', nextQuestionId: null },
+      { id: 'opt2', text: '在庫について', answer: '在庫についてのご質問ですね。担当者よりご連絡させていただきます。', nextQuestionId: null },
+      { id: 'opt3', text: '仕様について', answer: '仕様についてのご質問ですね。担当者よりご連絡させていただきます。', nextQuestionId: null }
     ],
     answers: {
       opt1: '価格についてのご質問ですね。担当者よりご連絡させていただきます。',

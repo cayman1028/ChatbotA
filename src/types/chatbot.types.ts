@@ -10,7 +10,8 @@ export interface Question {
 export interface Option {
   id: string;
   text: string;
-  nextQuestionId: string | null;
+  answer: string;
+  nextQuestionId?: string | null;
 }
 
 export interface ChatbotProps {
@@ -28,4 +29,4 @@ export interface ChatbotState {
   currentQuestion: Question | null;
   messages: ChatMessage[];
   isLoading: boolean;
-} 
+}
