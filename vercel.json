@@ -1,43 +1,11 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "installCommand": "npm install",
-  "public": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/dist/$1" }
+  ],
   "headers": [
     {
-      "source": "/chatbot.umd.js",
+      "source": "/(.*)",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
-    },
-    {
-      "source": "/chatbot.es.js",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
-    },
-    {
-      "source": "/chatbot.css",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/css"
-        },
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
