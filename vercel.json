@@ -3,40 +3,46 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "installCommand": "npm install",
-  "builds": [
+  "public": true,
+  "headers": [
     {
-      "src": "dist/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/chatbot.umd.js",
-      "headers": {
-        "Content-Type": "application/javascript",
-        "Access-Control-Allow-Origin": "*"
-      },
-      "dest": "/chatbot.umd.js"
+      "source": "/chatbot.umd.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     },
     {
-      "src": "/chatbot.es.js",
-      "headers": {
-        "Content-Type": "application/javascript",
-        "Access-Control-Allow-Origin": "*"
-      },
-      "dest": "/chatbot.es.js"
+      "source": "/chatbot.es.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     },
     {
-      "src": "/chatbot.css",
-      "headers": {
-        "Content-Type": "text/css",
-        "Access-Control-Allow-Origin": "*"
-      },
-      "dest": "/chatbot.css"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/chatbot.css",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     }
   ]
 } 

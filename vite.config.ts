@@ -30,7 +30,7 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     lib: {
-      entry: 'src/embed.tsx',
+      entry: path.resolve(__dirname, 'src/embed.tsx'),
       name: 'ChatbotA',
       formats: ['umd', 'es'],
       fileName: (format) => `chatbot.${format}.js`
@@ -45,7 +45,8 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css') return 'chatbot.css';
           return assetInfo.name;
-        }
+        },
+        dir: 'dist'
       }
     },
     exclude: [
