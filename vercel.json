@@ -1,13 +1,22 @@
 {
-  "headers": [
+  "version": 2,
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
+      "src": "/chatbot\\.(umd|es)\\.js",
+      "dest": "/dist/chatbot.$1.js",
+      "headers": {
+        "Content-Type": "application/javascript",
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "src": "/chatbot\\.css",
+      "dest": "/dist/chatbot.css",
+      "headers": {
+        "Content-Type": "text/css",
+        "Access-Control-Allow-Origin": "*"
+      }
     }
-  ]
+  ],
+  "outputDirectory": "dist"
 } 
