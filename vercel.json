@@ -1,14 +1,6 @@
 {
-  "version": 2,
-  "public": true,
-  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/chatbot.umd.js", "destination": "/chatbot.umd.js" },
-    { "source": "/chatbot.es.js", "destination": "/chatbot.es.js" },
-    { "source": "/chatbot.css", "destination": "/chatbot.css" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
