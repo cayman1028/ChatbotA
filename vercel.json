@@ -8,5 +8,35 @@
       "src": "dist/**",
       "use": "@vercel/static"
     }
+  ],
+  "routes": [
+    {
+      "src": "/chatbot.umd.js",
+      "headers": {
+        "Content-Type": "application/javascript",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "dest": "/chatbot.umd.js"
+    },
+    {
+      "src": "/chatbot.es.js",
+      "headers": {
+        "Content-Type": "application/javascript",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "dest": "/chatbot.es.js"
+    },
+    {
+      "src": "/chatbot.css",
+      "headers": {
+        "Content-Type": "text/css",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "dest": "/chatbot.css"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 } 

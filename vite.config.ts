@@ -32,17 +32,19 @@ export default defineConfig({
     lib: {
       entry: 'src/embed.tsx',
       name: 'ChatbotA',
-      formats: ['umd'],
-      fileName: () => 'chatbot.js'
+      formats: ['umd', 'es'],
+      fileName: (format) => `chatbot.${format}.js`
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
       output: {
-        inlineDynamicImports: true,
-        assetFileNames: 'chatbot.js',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM'
+        },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'chatbot.css';
+          return assetInfo.name;
         }
       }
     },
