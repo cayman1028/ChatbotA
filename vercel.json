@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "public": true,
   "outputDirectory": "dist",
-  "framework": "vite",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/chatbot.umd.js", "destination": "/dist/chatbot.umd.js" },
-    { "source": "/chatbot.es.js", "destination": "/dist/chatbot.es.js" },
-    { "source": "/chatbot.css", "destination": "/dist/chatbot.css" }
+    { "source": "/chatbot.umd.js", "destination": "/chatbot.umd.js" },
+    { "source": "/chatbot.es.js", "destination": "/chatbot.es.js" },
+    { "source": "/chatbot.css", "destination": "/chatbot.css" }
   ],
   "headers": [
     {
